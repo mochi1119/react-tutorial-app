@@ -3,8 +3,43 @@ import '../game.css';
 import Square from '../molecules/Square';
 
 class Board extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            history: [{
+                squares: Array(9).fill(null)
+              }]
+        };
+        this.updateHistory = this.updateHistory.bind(this);
+    }
+
+    updateHistory(id) {
+        const history = this.state.history.slice(0, this.props.stepNumber + 1);
+        const current = history[history.length - 1];
+        const squares = current.squares.slice();
+        if (this.props.result || squares[id]) {
+            return false;
+        }
+        squares[id] = this.props.isNext ? 'X' : 'O';
+        this.setState({
+            history: history.concat([{
+                squares: squares
+            }]),
+        });
+        this.props.set4NextStep(history.length);
+        this.props.calculateWinner(squares);
+        return true;
+    }
+
     renderSquare(i) {
-      return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />; 
+        return (
+            <Square
+                id={i}
+                isNext={this.props.isNext} 
+                updateHistory={this.updateHistory}
+                onClick={() => this.props.onClick(i)} 
+            />
+        );
     }
     render() {
         return (

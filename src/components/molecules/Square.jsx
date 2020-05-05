@@ -1,18 +1,29 @@
 import * as React from 'react';
 import '../game.css';
-import SingleSquare from '../atoms/SingleSquare';
+import SquareButton from '../atoms/SquareButton';
 
 class Square extends React.Component {
     constructor() {
       super();
       this.state = {
-        value: null,
+        value: null
       };
+      this.clickSquare = this.clickSquare.bind(this);
     }
+
+    clickSquare() {
+        const isUpdate = this.props.updateHistory(this.props.id);
+        if(isUpdate) {
+            this.setState({
+                value: this.props.isNext ? 'X' : 'O'
+            });
+        }
+    }
+
     render() {
-      return (
-        <SingleSquare value={this.props.value} onClick={() => this.props.onClick()} />
-      );
+        return (
+            <SquareButton value={this.state.value} clickSquare={this.clickSquare} />
+        );
     }
 }
 
