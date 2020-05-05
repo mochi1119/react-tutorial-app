@@ -72,17 +72,6 @@ class Game extends React.Component {
       } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
-
-      const moves = history.map((step, move) => {
-        const desc = move ?
-          'Move #' + move :
-          'Game start';
-        return (
-            <li key={move}> 
-                <button className="info-button" onClick={() => this.jumpTo(move)}>{desc}</button>
-            </li>
-        );
-      });
   
       return (
         <div className="game">
