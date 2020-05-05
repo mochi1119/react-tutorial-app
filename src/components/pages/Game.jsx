@@ -83,7 +83,7 @@ class Game extends React.Component {
             />
           </div>
           <div className="game-info">
-            <ol><Moves history={history} jumpTo={this.jumpTo} /></ol>
+            <Moves history={history} jumpTo={this.jumpTo} />
           </div>
         </div>
       );

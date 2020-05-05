@@ -11,14 +11,16 @@ class Moves extends React.Component {
     
     render() {
         return (
-            this.props.history.map((step, move) => {
-                const desc = move ? 'Move #' + move : 'Game start';
-                return (
-                    <li key={move}> 
-                        <button className="info-button" onClick={() => this.props.jumpTo(move)}>{desc}</button>
-                    </li>
-                )
-            })
+            <ol>
+                {this.props.history.map((step, move) => {
+                    const desc = move ? 'Move #' + move : 'Game start';
+                    return (
+                        <li key={move}> 
+                            <button className="info-button" onClick={() => this.props.jumpTo(move)}>{desc}</button>
+                        </li>
+                    )
+                })}
+            </ol>
         )
     }
 }
