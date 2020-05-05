@@ -22,7 +22,7 @@ class Square extends React.Component {
 
     render() {
         return (
-            <SquareButton value={this.state.value} clickSquare={this.clickSquare} />
+            <SquareButton class='square' value={this.props.value} onClick={this.clickSquare} />
         );
     }
 }

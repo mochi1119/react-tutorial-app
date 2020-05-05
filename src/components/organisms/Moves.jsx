@@ -1,5 +1,6 @@
 import * as React from 'react';
 import '../game.css'
+import SquareButton from '../atoms/SquareButton';
 
 class Moves extends React.Component {
     constructor() {
@@ -10,18 +11,10 @@ class Moves extends React.Component {
     }
     
     render() {
+        const desc = 'Move #' + this.props.id;
         return (
-            <ol>
-                {this.props.history.map((step, move) => {
-                    const desc = move ? 'Move #' + move : 'Game start';
-                    return (
-                        <li key={move}> 
-                            <button className="info-button" onClick={() => this.props.jumpTo(move)}>{desc}</button>
-                        </li>
-                    )
-                })}
-            </ol>
-        )
+            <button className="info-button" onClick={() => this.props.jumpTo(this.props.id)}>{desc}</button>
+        );
     }
 }
 

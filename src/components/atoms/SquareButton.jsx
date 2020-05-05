@@ -3,7 +3,7 @@ import '../game.css';
 
 const SingleSquare = (props) => {
     return (
-        <button className="square" onClick={() => props.clickSquare()}>
+        <button className={props.class} onClick={() => props.onClick()}>
             {props.value} 
         </button>
     );

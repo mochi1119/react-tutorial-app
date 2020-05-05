@@ -20,7 +20,8 @@ class Game extends React.Component {
     jumpTo(step) {
         this.setState({
           stepNumber: step,
-          xIsNext: (step % 2) ? false : true,
+          isNext: (step % 2) ? false : true,
+          result: null
         });
     }
 
@@ -62,6 +63,15 @@ class Game extends React.Component {
         } else {
             status = 'Next player: ' + (this.state.isNext ? 'X' : 'O');
         }
+
+        var list = [];
+        for(var step = 0; step < this.state.stepNumber; step++) {
+            list.push(
+                <li key={step}>
+                    <Moves id={step} stepNumber={this.state.stepNumber} jumpTo={this.jumpTo} />
+                </li>
+            )
+        }
     
         return (
             <div className="game">
@@ -76,7 +86,7 @@ class Game extends React.Component {
                 />
             </div>
             <div className="game-info">
-                {/* <Moves history={history} jumpTo={this.jumpTo} /> */}
+                <ol>{list}</ol>
             </div>
             </div>
         );

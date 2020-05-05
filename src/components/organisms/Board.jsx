@@ -31,33 +31,35 @@ class Board extends React.Component {
         return true;
     }
 
-    renderSquare(i) {
+    renderSquare(i, square) {
         return (
             <Square
                 id={i}
-                isNext={this.props.isNext} 
+                value={square} 
                 updateHistory={this.updateHistory}
-                onClick={() => this.props.onClick(i)} 
             />
         );
     }
     render() {
+        const history = this.state.history.slice(0, this.props.stepNumber + 1);
+        const current = history[history.length - 1];
+        const squares = current.squares.slice();
         return (
             <div>
                 <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
+                    {this.renderSquare(0, squares[0])}
+                    {this.renderSquare(1, squares[1])}
+                    {this.renderSquare(2, squares[2])}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
+                    {this.renderSquare(3, squares[3])}
+                    {this.renderSquare(4, squares[4])}
+                    {this.renderSquare(5, squares[5])}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
+                    {this.renderSquare(6, squares[6])}
+                    {this.renderSquare(7, squares[7])}
+                    {this.renderSquare(8, squares[8])}
                 </div>
             </div>
         );
