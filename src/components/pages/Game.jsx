@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '../game.css';
 import Board from '../organisms/Board';
+import Moves from '../organisms/Moves';
 
 
 class Game extends React.Component {
@@ -93,7 +94,7 @@ class Game extends React.Component {
             />
           </div>
           <div className="game-info">
-            <ol>{moves}</ol>
+            <ol><Moves history={history} jumpTo={this.jumpTo} /></ol>
           </div>
         </div>
       );
