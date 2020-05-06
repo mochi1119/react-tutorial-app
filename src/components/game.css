@@ -48,12 +48,13 @@ body {
   }
 
   .game-board {
-    margin-left : auto;
+    margin-left : 35%;
   }
   
   .game-info {
     margin-top: 25px;
     margin-right: auto;
+    margin-left: 20px;
     font-size: 16px;
   }
 

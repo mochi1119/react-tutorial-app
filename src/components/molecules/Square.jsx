@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '../game.css';
-import SquareButton from '../atoms/SquareButton';
+import { SingleSquare } from '../atoms/Button';
 
 class Square extends React.Component {
     constructor() {
@@ -22,7 +22,7 @@ class Square extends React.Component {
 
     render() {
         return (
-            <SquareButton class='square' value={this.props.value} onClick={this.clickSquare} />
+            <SingleSquare class='square' value={this.props.value} onClick={this.clickSquare} />
         );
     }
 }

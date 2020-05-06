@@ -63,15 +63,6 @@ class Game extends React.Component {
         } else {
             status = 'Next player: ' + (this.state.isNext ? 'X' : 'O');
         }
-
-        var list = [];
-        for(var step = 0; step < this.state.stepNumber; step++) {
-            list.push(
-                <li key={step}>
-                    <Moves id={step} stepNumber={this.state.stepNumber} jumpTo={this.jumpTo} />
-                </li>
-            )
-        }
     
         return (
             <div className="game">
@@ -85,9 +76,9 @@ class Game extends React.Component {
                     calculateWinner={this.calculateWinner}
                 />
             </div>
-            <div className="game-info">
-                <ol>{list}</ol>
-            </div>
+                <div className="game-info">
+                    <Moves stepNumber={this.state.stepNumber} jumpTo={this.jumpTo} />
+                </div>
             </div>
         );
     }
