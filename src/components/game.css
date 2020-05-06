@@ -61,4 +61,12 @@ body {
     font-size: 16px;
     margin-top: 5px;
   }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .highlight {
+    background-color: yellow;
+  }
   
